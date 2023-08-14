@@ -191,10 +191,7 @@ def request_email(update: Update, context: CallbackContext):
 
 def handle_users_reply(update: Update, context: CallbackContext):
     if not context.bot_data.get('db'):
-        env = Env()
-        env.read_env()
-        context.bot_data['db'] = Redis(host=env("REDIS_HOST"), port=env("REDIS_PORT"), db=0, password=env("REDIS_PASSWORD"))
-
+        context.bot_data['db'] = Redis.from_url(context.bot_data.get('db_url'))
 
     db = context.bot_data.get('db')
 
@@ -246,6 +243,7 @@ if __name__ == '__main__':
 
     updater = Updater(tg_api_key)
     dispatcher = updater.dispatcher
+    dispatcher.bot_data['db_url'] = env('REDIS_DB_URL')
     dispatcher.bot_data['moltin_api'] = MoltinAPI(
         moltin_api_url,
         moltin_client_id,
