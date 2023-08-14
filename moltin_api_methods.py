@@ -52,15 +52,30 @@ class MoltinAPI():
 
     def fetch_products(self):
         url = urljoin(self.api_base_url, 'pcm/products')
-        return self.make_get_request(url)
+        self.headers = {
+            'Authorization': f'Bearer {self.get_fresh_access_token()}'
+        }
+        response = requests.get(url, headers=self.headers)
+        response.raise_for_status()
+        return response.json()['data']
 
     def fetch_product_by_id(self, product_id):
         url = urljoin(self.api_base_url, f'pcm/products/{product_id}')
-        return self.make_get_request(url)
+        self.headers = {
+            'Authorization': f'Bearer {self.get_fresh_access_token()}'
+        }
+        response = requests.get(url, headers=self.headers)
+        response.raise_for_status()
+        return response.json()['data']
 
     def get_product_price(self, product_sku):
         url = urljoin(self.api_base_url, f'pcm/pricebooks/{self.price_book}/prices')
-        prices = self.make_get_request(url)
+        self.headers = {
+            'Authorization': f'Bearer {self.get_fresh_access_token()}'
+        }
+        response = requests.get(url, headers=self.headers)
+        response.raise_for_status()
+        prices = response.json()['data']
         filtered_price = [
             price for price in prices if price['attributes']['sku'] == product_sku
         ]
@@ -68,7 +83,12 @@ class MoltinAPI():
 
     def get_product_photo(self, photo_id):
         url = urljoin(self.api_base_url, f'v2/files/{photo_id}')
-        return self.make_get_request(url)
+        self.headers = {
+            'Authorization': f'Bearer {self.get_fresh_access_token()}'
+        }
+        response = requests.get(url, headers=self.headers)
+        response.raise_for_status()
+        return response.json()['data']
 
     def add_product_to_cart(self, cart_id, product_id, quantity):
         self.headers = {
@@ -88,11 +108,21 @@ class MoltinAPI():
 
     def get_cart(self, cart_id):
         url = urljoin(self.api_base_url, f'v2/carts/{cart_id}')
-        return self.make_get_request(url)
+        self.headers = {
+            'Authorization': f'Bearer {self.get_fresh_access_token()}'
+        }
+        response = requests.get(url, headers=self.headers)
+        response.raise_for_status()
+        return response.json()['data']
 
     def get_cart_items(self, cart_id):
         url = urljoin(self.api_base_url, f'v2/carts/{cart_id}/items')
-        return self.make_get_request(url)
+        self.headers = {
+            'Authorization': f'Bearer {self.get_fresh_access_token()}'
+        }
+        response = requests.get(url, headers=self.headers)
+        response.raise_for_status()
+        return response.json()['data']
 
     def remove_cart_item(self, cart_id, item_id):
         self.headers = {
@@ -121,4 +151,9 @@ class MoltinAPI():
 
     def get_customer(self, customer_id):
         url = urljoin(self.api_base_url, f'v2/customers/{customer_id}')
-        return self.make_get_request(url)
+        self.headers = {
+            'Authorization': f'Bearer {self.get_fresh_access_token()}'
+        }
+        response = requests.get(url, headers=self.headers)
+        response.raise_for_status()
+        return response.json()['data']
