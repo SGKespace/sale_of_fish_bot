@@ -12,7 +12,7 @@
 
 ## Требования к окружению
 
-Получите токены  [Телеграм](https://t.me/BotFather), затем определите [chat_id](https://t.me/messageinformationsbot)  поместите в переменные окружения (файл .env). 
+Получите токены  [Телеграм](https://t.me/BotFather), затем определите [chat_id](https://t.me/messageinformationsbot)  поместите в переменные окружения (файл .env). REDIS_DB_URL=redis://[[username]:[password]]@host:port/database Вы можете прочитать эту часть [документации Redis](https://redis.readthedocs.io/en/latest/connections.html#redis.Redis), чтобы узнать больше о типах URL-адресов баз данных, к которым может подключаться Redis.
 
 Пример файла:
 
@@ -24,9 +24,8 @@ EP_PRICE_BOOK_ID='46ddefdsd7d-9cdsd-44e9-bdfsd-d9d1dsvsvf92'
 CART_ID='2f525340-beb1-4cc8-5646t2-342353255212cd4'
 TELEGRAM_TOKEN='595436346261:AAHbhBJFjKlbZF8Fosdgvdfge4Jv6Zweeg'
 TG_LOG_CHAT_ID=123456789
-REDIS_PASSWORD=sC1mOadlnfwel238nfenjwnu38AoAQUw8G
-REDIS_HOST=redis-18998.c84.us-east-1-2.ec2.cloud.redislabs.com
-REDIS_PORT=198765
+REDIS_DB_URL=redis://default:sC1mOzyuuwGOvлпПР4FrEAoAQUw8G@redis-18998.c84.us-east-1-2.ec2.cloud.redislabs.com:18998/Sergey-free-db
+
 ``` 
 
 Python 3.xx и выше (должен быть уже установлен)
