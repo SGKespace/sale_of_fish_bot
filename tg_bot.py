@@ -246,7 +246,6 @@ if __name__ == '__main__':
 
     updater = Updater(tg_api_key)
     dispatcher = updater.dispatcher
-    # dispatcher.bot_data['db_url'] = env('REDIS_DB_URL')
     dispatcher.bot_data['moltin_api'] = MoltinAPI(
         moltin_api_url,
         moltin_client_id,
