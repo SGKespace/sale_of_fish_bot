@@ -42,14 +42,6 @@ class MoltinAPI():
         self.credentials = self.fetch_ep_credentials()
         return self.credentials.get('access_token')
 
-    def make_get_request(self, url):
-        self.headers = {
-            'Authorization': f'Bearer {self.get_fresh_access_token()}'
-        }
-        response = requests.get(url, headers=self.headers)
-        response.raise_for_status()
-        return response.json()['data']
-
     def fetch_products(self):
         url = urljoin(self.api_base_url, 'pcm/products')
         self.headers = {
