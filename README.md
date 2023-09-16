@@ -1,6 +1,10 @@
 # Yandex_Afisha
 Учебный проект dvmn
+
 Показывает интересные места по всему миру с помощью яндекс афиши, основан на этом [Фронтенде для сайта](https://github.com/devmanorg/where-to-go-frontend).     
+<img width="1228" alt="image" src="https://github.com/SGKespace/sale_of_fish_bot/assets/55636018/6cd4d26f-0769-412c-b2fd-a765c6f35478">
+
+
 
 ## Требования к окружению 
 Уставновить [Python 3+](https://www.python.org/downloads/)    
